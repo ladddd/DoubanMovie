@@ -1,0 +1,69 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion '27.0.1'
+
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    api "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+    testImplementation 'junit:junit:4.12'
+
+    //support
+    api "com.android.support:appcompat-v7:$support_version"
+    api "com.android.support:recyclerview-v7:$support_version"
+    api "com.android.support:cardview-v7:$support_version"
+    api "com.android.support:design:$support_version"
+
+    //kotlin
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    //anko
+    api "org.jetbrains.anko:anko:$anko_version"
+
+    //okhttp
+    api "com.squareup.okhttp3:okhttp:$okhttp_version"
+    api "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+
+    //stetho
+    api "com.facebook.stetho:stetho:$stetho_version"
+    api "com.facebook.stetho:stetho-okhttp3:$stetho_version"
+
+    //rxKotlin
+    api "io.reactivex.rxjava2:rxkotlin:$rxkotlin2_version"
+    //rxAndroid
+    api "io.reactivex.rxjava2:rxandroid:$rxandroid2_version"
+
+    //retrofit
+    api "com.squareup.retrofit2:retrofit:$retrofit_version"
+    api "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+    api "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    //bravh
+    api "com.github.CymChad:BaseRecyclerViewAdapterHelper:$bravh_version"
+
+}
