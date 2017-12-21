@@ -57,6 +57,10 @@ dependencies {
     api "io.reactivex.rxjava2:rxkotlin:$rxkotlin2_version"
     //rxAndroid
     api "io.reactivex.rxjava2:rxandroid:$rxandroid2_version"
+    //rxLifecyle
+    api "com.trello.rxlifecycle2:rxlifecycle:$rxlifecycle_version"
+    api "com.trello.rxlifecycle2:rxlifecycle-components:$rxlifecycle_version"
+    api "com.trello.rxlifecycle2:rxlifecycle-android-lifecycle-kotlin:$rxlifecycle_version"
 
     //retrofit
     api "com.squareup.retrofit2:retrofit:$retrofit_version"
@@ -66,4 +70,6 @@ dependencies {
     //bravh
     api "com.github.CymChad:BaseRecyclerViewAdapterHelper:$bravh_version"
 
+    //ptr
+    api "in.srain.cube:ultra-ptr:$ultraptr_version"
 }

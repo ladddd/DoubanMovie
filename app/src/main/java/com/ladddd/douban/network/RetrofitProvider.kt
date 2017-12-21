@@ -1,4 +1,4 @@
-package com.ladddd.baselib.network
+package com.ladddd.douban.network
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -6,6 +6,8 @@ import com.google.gson.TypeAdapter
 import com.google.gson.stream.JsonReader
 import com.google.gson.stream.JsonToken
 import com.google.gson.stream.JsonWriter
+import com.ladddd.douban.model.api.DoubanMovieApi
+import com.ladddd.douban.model.api.HttpAddressConfig
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -38,7 +40,7 @@ object RetrofitProvider {
         }
     }
 
-    fun getRetrofit(baseUrl : String) : Retrofit {
+    private fun getRetrofit(baseUrl : String) : Retrofit {
         if (!RetrofitProvider::retrofit.isInitialized) {
             retrofit = Retrofit.Builder()
                     .baseUrl(baseUrl)
@@ -49,5 +51,9 @@ object RetrofitProvider {
         }
 
         return retrofit
+    }
+
+    fun getDoubanService() : DoubanMovieApi {
+        return getRetrofit(HttpAddressConfig.DOUBAN_MOVIE_BASE_URL).create(DoubanMovieApi::class.java)
     }
 }

@@ -14,8 +14,7 @@ object Utils{
     var app: Application? = null
         @Throws(NullPointerException::class)
         get() {
-            if (field != null) return field
-            throw NullPointerException("u should init first")
+            return field ?: throw NullPointerException("u should init first")
         }
         private set
 

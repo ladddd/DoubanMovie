@@ -1,10 +1,10 @@
-package com.ladddd.baselib.network
+package com.ladddd.douban.network
 
 import android.util.Log
 import com.facebook.stetho.okhttp3.StethoInterceptor
+import com.ladddd.baselib.network.interceptor.CacheInterceptor
 import com.ladddd.baselib.network.interceptor.SignInterceptor
 import com.ladddd.baselib.utils.CacheUtils
-import com.ladddd.baselib.utils.Utils
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -32,6 +32,7 @@ object OkHttpProvider {
                 .addInterceptor(logInterceptor)
                 .addInterceptor(SignInterceptor())
                 .addNetworkInterceptor(StethoInterceptor())
+                .addNetworkInterceptor(CacheInterceptor())
                 .retryOnConnectionFailure(true)
                 .connectTimeout(30, TimeUnit.SECONDS)
                 .writeTimeout(30, TimeUnit.SECONDS)

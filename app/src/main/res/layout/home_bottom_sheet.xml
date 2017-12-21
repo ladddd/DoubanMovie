@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/bottom_sheet_height"
+    android:weightSum="3">
+
+    <com.ladddd.douban.widget.SelectableTabView
+        android:id="@+id/tab1"
+        style="@style/SelectableTab"
+        app:drawableNormal="@drawable/ic_looks_one_black_24dp"
+        app:drawableSelected="@drawable/ic_looks_one_blue_24dp"
+        app:tabText="@string/home_tab_cinema"/>
+
+    <com.ladddd.douban.widget.SelectableTabView
+        android:id="@+id/tab2"
+        style="@style/SelectableTab"
+        app:drawableNormal="@drawable/ic_looks_two_black_24dp"
+        app:drawableSelected="@drawable/ic_looks_two_blue_24dp"
+        app:tabText="@string/home_tab_discover"/>
+
+    <com.ladddd.douban.widget.SelectableTabView
+        android:id="@+id/tab3"
+        style="@style/SelectableTab"
+        app:drawableNormal="@drawable/ic_looks_3_black_24dp"
+        app:drawableSelected="@drawable/ic_looks_3_blue_24dp"
+        app:tabText="@string/home_tab_user"/>
+
+</LinearLayout>
