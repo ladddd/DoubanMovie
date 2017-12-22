@@ -3,13 +3,12 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion '27.0.1'
-
+    compileSdkVersion rootProject.compile_version
+    buildToolsVersion rootProject.buildtool_version
 
     defaultConfig {
-        minSdkVersion 19
-        targetSdkVersion 26
+        minSdkVersion rootProject.min_version
+        targetSdkVersion rootProject.target_version
         versionCode 1
         versionName "1.0"
 
@@ -71,5 +70,10 @@ dependencies {
     api "com.github.CymChad:BaseRecyclerViewAdapterHelper:$bravh_version"
 
     //ptr
-    api "in.srain.cube:ultra-ptr:$ultraptr_version"
+    compile "com.scwang.smartrefresh:SmartRefreshLayout:$ptr_version"
+    compile "com.scwang.smartrefresh:SmartRefreshHeader:$ptr_version"
+
+    //glide
+    api "com.github.bumptech.glide:glide:$glide_version"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
 }

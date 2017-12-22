@@ -18,12 +18,15 @@ class HomeBottomSheet(context: Context, attributeSet: AttributeSet? = null) : Li
 
     private val tabArray = ArrayList<SelectableTabView>()
 
+    var tabSelectedListener : OnTabSelectedListener? = null
+
     init {
         val contentView = LayoutInflater.from(context).inflate(R.layout.home_bottom_sheet, this) as View
         val tab1 = contentView.find<SelectableTabView>(R.id.tab1)
         val tab2 = contentView.find<SelectableTabView>(R.id.tab2)
         val tab3 = contentView.find<SelectableTabView>(R.id.tab3)
 
+        tab1.tabSelected = true
         tabArray.add(tab1)
         tabArray.add(tab2)
         tabArray.add(tab3)
@@ -37,5 +40,10 @@ class HomeBottomSheet(context: Context, attributeSet: AttributeSet? = null) : Li
         for (i in tabArray.indices) {
             tabArray[i].tabSelected = i == index
         }
+        tabSelectedListener?.onTabSelected(index)
+    }
+
+    interface OnTabSelectedListener {
+        fun onTabSelected(index: Int)
     }
 }

@@ -16,7 +16,6 @@ import android.widget.ImageView
 import android.widget.TextView
 
 import com.ladddd.douban.R
-import org.jetbrains.anko.backgroundDrawable
 import org.jetbrains.anko.find
 import org.jetbrains.anko.textColor
 
@@ -70,7 +69,7 @@ class SelectableTabView(context: Context, attrs: AttributeSet) : ConstraintLayou
         tv_unread = contentView.find(R.id.tv_unread)
         iv_notice = contentView.find(R.id.iv_notice)
 
-        var typedArray = context.obtainStyledAttributes(attrs, R.styleable.SelectableTabView)
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.SelectableTabView)
         //可能不仅是区分颜色，所以区分两种drawable
         normalDrawableResId = typedArray.getResourceId(R.styleable.SelectableTabView_drawableNormal, R.drawable.ic_looks_one_black_24dp)
         selectedDrawableResId = typedArray.getResourceId(R.styleable.SelectableTabView_drawableSelected, R.drawable.ic_looks_one_blue_24dp)
@@ -82,12 +81,6 @@ class SelectableTabView(context: Context, attrs: AttributeSet) : ConstraintLayou
         selectedTextSize = typedArray.getDimension(R.styleable.SelectableTabView_textSizeSelected, 14f)
         tabText = typedArray.getString(R.styleable.SelectableTabView_tabText)
         tabSelected = typedArray.getBoolean(R.styleable.SelectableTabView_initialSelected, false)
-        typedArray.recycle()
-
-        //ripple effect
-        typedArray = context.obtainStyledAttributes(intArrayOf(R.attr.selectableItemBackgroundBorderless))
-        val drawable = typedArray.getDrawable(0)
-        backgroundDrawable = drawable
         typedArray.recycle()
 
         iv_tab_icon.setImageResource(if (tabSelected) selectedDrawableResId else normalDrawableResId)

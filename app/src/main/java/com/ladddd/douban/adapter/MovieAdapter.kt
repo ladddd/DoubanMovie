@@ -1,7 +1,9 @@
 package com.ladddd.douban.adapter
 
+import android.widget.ImageView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
+import com.ladddd.baselib.extension.loadUrl
 import com.ladddd.douban.R
 import com.ladddd.douban.bean.MovieSubject
 
@@ -11,6 +13,8 @@ import com.ladddd.douban.bean.MovieSubject
 class MovieAdapter : BaseQuickAdapter<MovieSubject, BaseViewHolder>(R.layout.item_movie) {
 
     override fun convert(helper: BaseViewHolder?, item: MovieSubject?) {
+        helper?.setText(R.id.tv_movie_name, item?.title)
 
+        helper?.getView<ImageView>(R.id.iv_movie_image)?.loadUrl(item?.images?.small)
     }
 }

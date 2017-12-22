@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager
 import com.ladddd.baselib.componet.BaseActivity
 import com.ladddd.douban.R
+import com.ladddd.douban.widget.HomeBottomSheet
 import org.jetbrains.anko.find
 
 /**
@@ -34,6 +35,13 @@ class MainActivity : BaseActivity() {
 
             override fun getCount(): Int {
                 return fragments.size
+            }
+        }
+
+        val bottom_sheet = find<HomeBottomSheet>(R.id.bottom_sheet)
+        bottom_sheet.tabSelectedListener = object : HomeBottomSheet.OnTabSelectedListener {
+            override fun onTabSelected(index: Int) {
+                vp_home.currentItem = index
             }
         }
     }

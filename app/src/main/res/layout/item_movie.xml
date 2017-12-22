@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:paddingTop="5dp"
     android:paddingBottom="5dp"
     android:paddingStart="10dp"
@@ -14,7 +14,7 @@
         android:id="@+id/iv_movie_image"
         android:layout_width="60dp"
         android:layout_height="80dp"
-        tools:src="@color/colorPrimary"/>
+        android:src="@color/colorPrimary"/>
 
     <TextView
         android:id="@+id/tv_movie_name"
