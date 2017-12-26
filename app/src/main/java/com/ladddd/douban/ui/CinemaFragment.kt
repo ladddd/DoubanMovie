@@ -9,6 +9,7 @@ import com.ladddd.douban.adapter.MovieAdapter
 import com.ladddd.douban.bean.MovieListData
 import com.ladddd.douban.bean.MovieSubject
 import com.ladddd.douban.network.RetrofitProvider
+import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import org.jetbrains.anko.support.v4.find
@@ -19,6 +20,7 @@ import org.jetbrains.anko.support.v4.find
 @SuppressLint("CheckResult")
 class CinemaFragment : BaseFragment() {
 
+    private lateinit var ptrLayout: SmartRefreshLayout
     private lateinit var list_cinema : RecyclerView
     private lateinit var adapter : MovieAdapter
     private var pageNum = 0
@@ -29,6 +31,12 @@ class CinemaFragment : BaseFragment() {
     }
 
     override fun initViews() {
+        ptrLayout = find(R.id.ptrLayout)
+        ptrLayout.setOnRefreshListener {
+            pageNum = 0
+            loadData()
+        }
+
         list_cinema = find(R.id.list_cinema)
         list_cinema.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         adapter = MovieAdapter()
@@ -51,18 +59,21 @@ class CinemaFragment : BaseFragment() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     subjects: List<MovieSubject> ->
-                        if (pageNum == 0)
-                            adapter.setNewData(subjects)
-                        else
-                            adapter.addData(subjects)
-                        if (pageNum == 250)
-                            adapter.loadMoreEnd()
-                        else
-                            adapter.loadMoreComplete()
+                    if (pageNum == 0) {
+                        adapter.setNewData(subjects)
+                        ptrLayout.finishRefresh()
+                    } else
+                        adapter.addData(subjects)
+                    if (pageNum == 250)
+                        adapter.loadMoreEnd()
+                    else
+                        adapter.loadMoreComplete()
 
                 }, {
-                    if (pageNum == 0)
+                    if (pageNum > 0)
                         adapter.loadMoreFail()
+                    else
+                        ptrLayout.finishRefresh(false)
                 })
     }
 }

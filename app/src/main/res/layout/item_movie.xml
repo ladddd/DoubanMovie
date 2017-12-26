@@ -13,15 +13,14 @@
     <ImageView
         android:id="@+id/iv_movie_image"
         android:layout_width="60dp"
-        android:layout_height="80dp"
-        android:src="@color/colorPrimary"/>
+        android:layout_height="80dp"/>
 
     <TextView
         android:id="@+id/tv_movie_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/iv_movie_image"
-        android:layout_alignTop="@+id/iv_movie_image"
+        android:layout_toEndOf="@id/iv_movie_image"
+        android:layout_alignTop="@id/iv_movie_image"
         android:layout_marginStart="10dp"
         tools:text="霸王别姬"/>
 
